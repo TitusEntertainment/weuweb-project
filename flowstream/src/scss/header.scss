@@ -1,0 +1,31 @@
+.Header {
+  display: flex;
+
+  justify-content: space-between;
+
+  nav ul li #logo {
+    margin-top: -2.45em;
+  }
+
+  nav ul {
+    display: flex;
+    padding-top: 3.3em;
+
+    li {
+      padding-left: 2em;
+      font-size: 1.3em;
+      font-weight: 500;
+    }
+  }
+
+  button {
+    width: 5em;
+    height: 3em;
+    background: #26282e;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    margin-top: 3rem;
+    box-shadow: 4px 4px 16px #222429, -2px -2px 16px #2a2c33;
+  }
+}

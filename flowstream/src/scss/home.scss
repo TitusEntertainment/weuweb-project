@@ -1,0 +1,41 @@
+.Home {
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  padding: 0;
+  margin: 0;
+  margin-left: -10rem;
+  text-align: center;
+
+  h1 {
+    font-size: 3em;
+    padding-bottom: 5em;
+    font-weight: bold;
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: -8rem;
+  }
+
+  img {
+    width: 35vw;
+    height: 100%;
+  }
+
+  button {
+    width: 12em;
+    height: 3em;
+    background: #26282e;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    margin-top: 3rem;
+    box-shadow: 4px 4px 16px #222429, -2px -2px 16px #2a2c33;
+  }
+}

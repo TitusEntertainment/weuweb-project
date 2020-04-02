@@ -1,12 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.11)  9 MAR 2020 09:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.2.7)  16 MAR 2020 08:56
 entering extended mode
-**c:/Users/eddie.englund/Desktop/code/weuweb2_Eddie_englund/project/plan.tex
-(c:/Users/eddie.englund/Desktop/code/weuweb2_Eddie_englund/project/plan.tex
-LaTeX2e <2019-10-01> patch level 2
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\article.cls"
-Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\size10.clo"
-File: size10.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/titus/code/weuweb/weuweb-project/plan.tex
+(/home/titus/code/weuweb/weuweb-project/plan.tex
+LaTeX2e <2019-10-01> patch level 1
+(/usr/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@section=\count81
@@ -19,7 +22,7 @@ File: size10.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (c:/Users\eddie.englund\Desktop\code\weuweb2_Eddie_englund\project\plan.aux)
+) (/home/titus/code/weuweb/weuweb-project/plan.aux)
 \openout1 = `plan.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -40,62 +43,63 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 6.
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 17.
- ("C:\Program Files\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 18.
+ (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
  [1
 
-{C:/Users/eddie.englund/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 34.
+(Font)              <7> on input line 35.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 34.
+(Font)              <5> on input line 35.
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 39--39
 []\OT1/cmr/m/n/10 Vecka
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 []\OT1/cmr/m/n/10 Se att funk-tion-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--40
+Underfull \hbox (badness 10000) in paragraph at lines 41--41
 []\OT1/cmr/m/n/10 Vecka
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
-[]\OT1/cmr/m/n/10 Utvackla front-
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
+[]\OT1/cmr/m/n/10 Utv^^?ackla front-
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 40--41
+Underfull \hbox (badness 2126) in paragraph at lines 41--42
 \OT1/cmr/m/n/10 enden och kop-pla
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--42
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
 []\OT1/cmr/m/n/10 Vecka
  []
 
-[2] (c:/Users\eddie.englund\Desktop\code\weuweb2_Eddie_englund\project\plan.aux) ) 
+[2] (/home/titus/code/weuweb/weuweb-project/plan.aux) ) 
 Here is how much of TeX's memory you used:
- 267 strings out of 492450
- 3468 string characters out of 3129724
- 65480 words of memory out of 3000000
- 4699 multiletter control sequences out of 15000+200000
- 7626 words of font info for 27 fonts, out of 3000000 for 9000
+ 265 strings out of 492167
+ 3175 string characters out of 6131559
+ 65582 words of memory out of 5000000
+ 4699 multiletter control sequences out of 15000+600000
+ 7626 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 25i,9n,19p,492b,187s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on c:/Users\eddie.englund\Desktop\code\weuweb2_Eddie_englund\project\plan.pdf (2 pages, 79040 bytes).
+ 25i,9n,19p,465b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on /home/titus/code/weuweb/weuweb-project/plan.pdf (2 pages, 75387 bytes).
 PDF statistics:
- 33 PDF objects out of 1000 (max. 8388607)
+ 35 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
