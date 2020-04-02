@@ -1,8 +1,11 @@
+const { Logger } = require("@ayana/logger");
 const logger = Logger.get("DB");
-import { connect, connection } from "mongoose";
+const { connect } = require("mongoose");
 class DB {
   /**
-   * @param { Object } config. This is where we get access to the mongodb uri but also the guildLog function passed from the client on init
+   * @param { Object } config. This is where we get access to the mongodb uri passed by the user if there is none we throw and error
+   *
+   * @description this class handles the mongoose (mongoDB) events and handles the connection to the database
    */
 
   constructor(config) {
