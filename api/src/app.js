@@ -26,8 +26,11 @@ const db = new database(process.env.DB_CONNECT);
 app.use(express.json());
 
 // Add route /user and tie the AUTH to that route.
-app.use("/api/user", authRoute);
-app.use("/api/posts", postRoute);
+app.use("/user", authRoute);
+app.use("/posts", postRoute);
+
+// Here I define a simple listener that listens for the error event and loggs the errors. to the console Note: This might change to log files in the future
+app.on("error", (err) => logger.error(err));
 
 // This var checks if the env variable is set. If it isn't it will default to port 3000
 
