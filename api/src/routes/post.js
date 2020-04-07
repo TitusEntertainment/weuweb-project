@@ -15,21 +15,23 @@ router.get("/", verify, (req, res) => {
   res.status(200).send("Hello, world!");
 });
 
-router.post("/new", verify, async (req, res) => {
-  if (!req.data) return res.status(400).send("You must supply a data object");
 
-  const _user = User.findOne({ _id: req.user._id });
+// This route creates a new post. If the user doesn't send a a text body object the api returns a 400. Otherwise it saves the data and then returns that data to the frontend so that the frontend doesn't have to get the data afterwards. This way we can save on the client sides (users) performance.
+
+router.post("/new", verify, async (req, res) => {
+  if (!req.body.body) return res.status(400).send("You must supply a text body!");
+  const _user = await User.findOne({ _id: req.user._id });
   if (!_user) throw new Error("Cannot find user even though the user has a valid jwt");
 
   const newPost = new Post({
     userId: _user._id,
     username: _user.username,
-    body: req.body,
+    body: req.body.body,
   });
 
   try {
     await newPost.save();
-    res.stauts(200).send(newPost);
+    res.status(200).send(newPost);
   } catch (error) {
     res.status(500).send(`Something went wrong: ${error.message}`);
     logger.error(error);
