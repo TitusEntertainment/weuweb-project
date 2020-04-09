@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 // Get the auth.js and post.js
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/post");
+const userRoute = require("./routes/user");
 
 // Get a logger instance
 const { Logger } = require("@ayana/logger");
@@ -26,7 +27,7 @@ const db = new database(process.env.DB_CONNECT);
 app.use(express.json());
 
 // Add route /user and tie the AUTH to that route.
-app.use("/user", authRoute);
+app.use("/user", authRoute, userRoute);
 app.use("/posts", postRoute);
 
 // Here I define a simple listener that listens for the error event and loggs the errors. to the console Note: This might change to log files in the future
