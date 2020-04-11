@@ -7,6 +7,7 @@ function createTag() {
   return Math.floor(1000 + Math.random() * 5000);
 }
 
+// The genTag function is an asycronys function that creates a tag and tries to find a duplicate in the databse. If there is one we make a loop and try creating new tags untill we find one that isn't in the database and then return that.
 const genTag = async () => {
   let newTag = createTag();
   let bool;
