@@ -1,26 +1,19 @@
-// Get the express instance
 const express = require("express");
-
-//Get dotenv to handle envoirment variables
 const dotenv = require("dotenv");
-
-// Get the auth.js and post.js
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/post");
 const userRoute = require("./routes/user");
-
-// Get a logger instance
 const { Logger } = require("@ayana/logger");
 const logger = Logger.get("app");
-
-//Declare the app instance
-const app = express();
 const database = require("./database/init.js");
+
+// We begin by declaring the app
+const app = express();
 
 // Get protected envoirment variables. this is to ensure that credentials are kept safe. Create a .env file with a variable called DB_CONNECT and assign it to the correct MongoDB uri to connect to database
 dotenv.config();
 
-// Create an instance of the database handler
+// Here we create the database and pass our URI
 const db = new database(process.env.DB_CONNECT);
 
 // Make sure that the api uses the json standard
@@ -34,7 +27,6 @@ app.use("/posts", postRoute);
 app.on("error", (err) => logger.error(err));
 
 // This var checks if the env variable is set. If it isn't it will default to port 3000
-
 const PORT = process.env.PORT || 3000;
 
 // Start the app and connect to the databse

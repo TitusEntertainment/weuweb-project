@@ -1,12 +1,7 @@
-// get the router instance from express and the verify function from verifyToken.js
 const router = require("express").Router();
 const verify = require("./verifyToken");
-
-//Get the user post/comment model and the User
 const Post = require("../database/model/_Post");
 const User = require("../database/model/_User");
-
-// Get logger
 const { Logger } = require("@ayana/logger");
 const logger = Logger.get("post");
 
@@ -41,7 +36,7 @@ router.post("/new", verify, async (req, res) => {
   }
 });
 
-// This route is meant to delete the user. It's quite simple and only requires the jwt verification proccess to be valid. Once that's verified we try to delete the user.
+// This route is meant to delete the user. It's quite simple and only requires the jwt verification proccess to be valid. Once that's verified we try to delete the user. If there's an error we return an error 400 (if there isn't valid post data from the frontend client). If there's an error deleting it we return a 500 and an error message, otherwise we just return a 200 (ok)
 router.post("/delete", verify, async (req, res) => {
   if (!req.body.postId || req.user._id !== req.body.userId || !req.body.userId)
     return res.status(400).send("You must supply a valid user and post id that are related.");
@@ -55,7 +50,7 @@ router.post("/delete", verify, async (req, res) => {
   }
 });
 
-// This route simply edit's the user. It takes in an object with data and tries to apply that to the db
+// This route simply edit's the user. It takes in an object with data (req.body) and valid data in it (postId and userId) if it isn't valid data we return an error 400 and a error message. Otherwise we return a 200 (ok). We then try to find the post with the data supplied. We verify once again that this is the correct user that's trying to edit the post and then we make the eddit and save it.
 router.post("/edit", verify, async (req, res) => {
   if (!req.body) return res.status(400).send("You must provide a valid data object");
 
@@ -65,6 +60,8 @@ router.post("/edit", verify, async (req, res) => {
   const data = Post.findOne({ _id: req.body.postId });
 
   if (!data) return res.status(500).send("No such post in database");
+
+  if (data.userId !== req.body.userId) return res.status(400).send("The post found does not include the users id");
 
   const settings = req.body;
 

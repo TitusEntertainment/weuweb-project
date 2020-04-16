@@ -1,32 +1,15 @@
-// Get the router from express so that we can get acess to post and get requests and make routes/functions for them
 const router = require("express").Router();
-
-// Bcrypt is the library we use to salt/hash passwords
 const bcrypt = require("bcryptjs");
-
-// JWT (json web token) is a token assigned to a user that has an expiery time. We send this to the frontend so that the frontend then can send this token back to validate anything whenever the user does a task
 const jwt = require("jsonwebtoken");
-
-// Here we get the user model
 const User = require("../database/model/_User");
-
-// Here we get the Tag model
-
 const Tag = require("../database/model/_Tag");
-
-// Here we get the tag generator function
 const genTag = require("../util/tagGenerator");
-
-// We also get two functions from val.js so that we can validate some things
 const { registerValidation, loginValidation } = require("../validation/val");
 
+// This route handles the registration. We begin by verifying that all the nececary data (and data restrictions like min password length, min name length etc) is passed form the frontend client if there isn't one we return an error 400 and pass the error message/details. We also make sure to check if the email passed already exits. Again if does we return a 400 and an error message. Once we've checked all that we generate a salt and then has the password with that salt. Once we've done that we generate a tag for this user and then we save the user in the database. We also save a separate tag model. Then we return a 200 (ok) and some of the users information
 router.post("/register", async (req, res) => {
-  // Creates the /register endpoint of the api. Here we check if there's an error, and if there is an error; we sand a error code 400 and some details back.
-
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
-  // Check if user already in db and if it is return an error
 
   const emailExist = await User.findOne({
     email: req.body.email,
@@ -34,11 +17,9 @@ router.post("/register", async (req, res) => {
 
   if (emailExist) return res.status(400).send("There is already a user with that email.");
 
-  // Then we hash/salt the password with bcrypt (a node module)
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-  // Then we proceed to add the correct data to the user model we also get the new tag
   const tag = await genTag();
 
   const user = new User({
@@ -56,34 +37,29 @@ router.post("/register", async (req, res) => {
     username: user.username,
   });
 
-  //Then we try to save it and return a user id to the frontend so that the frontend then can save that and use it to retrive the user once again if nececary
-
   try {
     await user.save();
     await newTag.save();
-    return res.send({ user: user.id });
+    return res.send(user._id, user.name, user.lastName, user.username, user.email, user.tag);
   } catch (e) {
     res.status(400).send(e);
   }
   return undefined;
 });
 
-// Login route
-router.post("/login", async (req, res) => {
-  // Just like before check for errors and check if there's a user with that login. If there isn't return an error
+// This route handles the login. It needs the frontend client to pass in an email and a password. To make sure than we don't do anything complicated we just begin by checking if there's a valid body (the request from the client) that includes email and password. Then we check if we can find the user in the database. However, the error we throw back if the user isn't identified/in the database is the exact same one that we send if the password isn't correct later. This is to prevent brute forcing/out smarting the system. If it works correctly we return a newly signed jwt (json web token) that includes the users id. This way whenever we verify the jwt later we can always access the user
 
+router.post("/login", async (req, res) => {
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const user = await User.findOne({
     email: req.body.email,
   });
-  // Check if email exists
   if (!user) return res.status(400).send("Email or password is wrong");
-  // Password CHECK
+
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Email or password is wrong");
 
-  // Create and assign token
   const token = jwt.sign(
     {
       data: { _id: user._id },
@@ -91,8 +67,7 @@ router.post("/login", async (req, res) => {
     process.env.TOKEN_SECRET,
     { expiresIn: "2h" }
   );
-  return res.header("auth-token", token).send(token);
+  return res.status(200).header("auth-token", token).send(token);
 });
 
-// and finally we export this module so that we can assign it to an endpoint/a rote in app.js
 module.exports = router;
