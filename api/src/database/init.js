@@ -10,6 +10,7 @@ class DB {
    * @param { Object } config. This is where we get access to the mongodb uri passed by the user if there is none we throw and error
    *
    * @description this class handles the mongoose (mongoDB) events and handles the connection to the database. We also listen to  a set of events namely: connect, err (error) and disconnected. On these events we logg them with diffirent severity levels. Info, warnings and errors.
+   * @method init This method initalises the database connection and sets all the configuration relevant to it
    */
 
   constructor(_uri) {
