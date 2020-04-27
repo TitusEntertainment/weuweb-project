@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 import MediaQuery from "react-responsive";
 
@@ -26,7 +26,9 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <button>Login</button>
+        <button>
+          <Link to="/register">Register/Login</Link>
+        </button>
       </MediaQuery>
       <MediaQuery maxDeviceWidth={800}>MOBILE NAV OMG</MediaQuery>
     </div>

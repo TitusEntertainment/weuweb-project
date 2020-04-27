@@ -1,0 +1,40 @@
+.Register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsla(229, 15%, 14%, 0.9);
+  border-radius: 8px;
+  width: 50%;
+  height: 80%;
+  margin-left: 25%;
+  margin-top: 2%;
+
+  form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    width: 50vw;
+
+    input {
+      margin-top: 5%;
+      padding: 1rem;
+      width: 50%;
+      height: 50%;
+    }
+    button {
+      margin-top: 5%;
+      padding: 0.8rem 2rem;
+      background: #4ca84c;
+      color: #f8f8f8;
+      font-weight: 500;
+      border: none;
+      border-radius: 2px;
+    }
+
+    p {
+      margin-top: 5%;
+    }
+  }
+}
