@@ -4,21 +4,20 @@ function createTag() {
   return Math.floor(1000 + Math.random() * 5000);
 }
 
-// The genTag function is an asycronys function that creates a tag and tries to find a duplicate in the databse. If there is one we make a loop and try creating new tags untill we find one that isn't in the database and then return that. We also don't expect any variables to be passed because it doesn't require it. We have a TAG model that we save every time we create a user that gets a tag. This way we can save on system recourses. We then return newTag
-const genTag = async () => {
+// The genTag function is an asyncronus function that creates a tag and tries to find a duplicate in the databse. If there is one we make a loop and try creating new tags untill we find one that isn't in the database and then return that. We expect a username so that we only have to query for people with similar usernames so that we can optimise it. Yes, it is okay for two users to have the same discriminators but NOT name and discriminator
+const genTag = async (username) => {
   let newTag = createTag();
-  let bool;
 
-  let data = await Tag.findOne({ tag: newTag });
+  //let data = await Tag.findOne({ tag: newTag });
+  let data = await Tag.find({ username }).select("tag -_id");
+  if (data.tags.length > 10000) return null;
 
-  if (data) bool = true;
-  else return newTag;
-
-  while (bool) {
-    newTag = genTag();
-    data = await Tag.findOne({ tag: newTag });
-    if (newTag !== data.tag) break;
+  const tags = data.map((el) => el.tag);
+  while (tags.includes(newTag)) {
+    newTag = createTag();
+    if (!tags.includes(newTag)) break;
   }
+
   return newTag;
 };
 

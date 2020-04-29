@@ -31,8 +31,5 @@ app.on("error", (err) => logger.error(err));
 // This var checks if the env variable is set. If it isn't it will default to port 3000
 const PORT = process.env.PORT || 3000;
 
-// Start the app and connect to the databse
-
-(async () => {
-  await db.init();
-})().then(app.listen(PORT, () => logger.info("ready")));
+// STart the database and then we start the application itself
+db.init().then(app.listen(PORT, () => logger.info("ready")));

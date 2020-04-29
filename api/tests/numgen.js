@@ -4,6 +4,6 @@ const genTag = require("../src/util/tagGenerator");
 
 (async () => {
   console.log("waiting for genTag()");
-  const data = await genTag();
+  const data = await genTag("Emmie");
   console.log(data);
 })();

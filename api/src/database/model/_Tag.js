@@ -1,8 +1,9 @@
 const { Schema, model, Types } = require("mongoose");
 
+// Define schema that has 4 variables: tag, userId, and username. We also assign
 const tagSchema = new Schema({
   tag: { type: Number, required: true },
-  userId: { type: Types.ObjectId, required: true },
+  userId: { type: Types.ObjectId, required: true, unique },
   username: { type: String, required: true },
 });
 
