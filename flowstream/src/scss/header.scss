@@ -3,13 +3,13 @@
 
   justify-content: space-between;
 
-  nav ul li #logo {
-    margin-top: -2.45em;
-  }
-
   nav ul {
     display: flex;
     padding-top: 3.3em;
+
+    #logo {
+      margin-top: -2.45em;
+    }
 
     li {
       padding-left: 2em;
@@ -27,5 +27,30 @@
     border-radius: 0.5em;
     margin-top: 3rem;
     box-shadow: 4px 4px 16px #222429, -2px -2px 16px #2a2c33;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .Header {
+    flex-direction: column;
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      margin-left: -2rem;
+    }
+
+    nav ul li {
+      padding-left: 2rem;
+      font-size: 0.8rem;
+      margin-top: -2rem;
+      text-align: center;
+    }
+  }
+
+  button {
+    width: 2rem;
+    margin-top: 0rem;
+    font-size: 1rem;
   }
 }
