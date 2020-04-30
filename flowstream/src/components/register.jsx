@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import "../scss/register.scss";
 import { useForm } from "react-hook-form";
 import fetch from "node-fetch";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit, errors, setError, clearError } = useForm();
   let formSubmitError = "";
-  let confirmPasswordError = "";
   const [currPassword, setCurrPassword] = useState("");
+
+  const validateEmail = (e) => {
+    const reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    const subject = e.target.value.toLowerCase();
+    if (reg.test(subject)) return clearError("email");
+    setError("email", "notMatch", "Please, enter a valid email");
+  };
 
   const onSubmit = (data) => {
     const tempName = data.fullName.split(" ");
@@ -26,9 +34,12 @@ const Register = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     }).then((res) => {
-      console.log(res);
-      if (res.status === 400) {
-        formSubmitError = "Something went wrong! Please try again.";
+      switch (res.stauts) {
+        case 400:
+          formSubmitError = "something went wrong!";
+          break;
+        case 200:
+          formSubmitError = "Success!";
       }
     });
   };
@@ -66,10 +77,16 @@ const Register = () => {
           }}
           ref={register({ required: true, minLength: 2 })}
         />
-        {errors.email && <p>You must provide a valid email!</p>}
+        {errors.username && <p>{errors.username.message}</p>}
 
-        <input type="email" name="email" placeholder="Email" ref={register({ required: true, minLength: 5 })} />
-        {errors.email && <p>You must provide a valid email!</p>}
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={(e) => validateEmail(e)}
+          ref={register({ required: true, minLength: 5 })}
+        />
+        {errors.email && <p>{errors.email.message}</p>}
 
         <input
           type="password"
@@ -96,7 +113,9 @@ const Register = () => {
         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
         <button type="submit">Register</button>
         <p>{formSubmitError}</p>
-        <p id="alreadyGotAcc">Already have an account? Login!</p>
+        <Link to="/login">
+          <p id="alreadyGotAcc">Already have an account? Login!</p>
+        </Link>
       </form>
     </div>
   );

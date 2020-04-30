@@ -1,4 +1,5 @@
-.Register {
+.Register,
+.Login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,8 +41,15 @@
   }
 }
 
+.Login {
+  form {
+    height: 40%;
+  }
+}
+
 @media only screen and (max-width: 1280px) {
-  .Register {
+  .Register,
+  .Login {
     width: 100%;
     margin: 0;
     padding: 0;

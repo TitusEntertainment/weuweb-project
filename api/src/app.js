@@ -7,10 +7,12 @@ const { Logger } = require("@ayana/logger");
 const logger = Logger.get("app");
 const database = require("./database/init.js");
 const cors = require("cors");
+const bodyparser = require("body-parser");
 
 // We begin by declaring the app
 const app = express();
 app.use(cors());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 // Get protected envoirment variables. this is to ensure that credentials are kept safe. Create a .env file with a variable called DB_CONNECT and assign it to the correct MongoDB uri to connect to database
 dotenv.config();
