@@ -48,7 +48,6 @@ router.post("/register", async (req, res) => {
 // This route handles the login. It needs the frontend client to pass in an email and a password. To make sure than we don't do anything complicated we just begin by checking if there's a valid body (the request from the client) that includes email and password. Then we check if we can find the user in the database. However, the error we throw back if the user isn't identified/in the database is the exact same one that we send if the password isn't correct later. This is to prevent brute forcing/out smarting the system. If it works correctly we return a newly signed jwt (json web token) that includes the users id. This way whenever we verify the jwt later we can always access the user
 
 router.post("/login", async (req, res) => {
-  console.log(req.body);
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const user = await User.findOne({
@@ -58,8 +57,6 @@ router.post("/login", async (req, res) => {
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Email or password is wrong");
-
-  console.log("I'm here");
 
   const token = jwt.sign(
     {
