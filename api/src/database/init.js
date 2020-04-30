@@ -3,7 +3,7 @@ const { Logger } = require("@ayana/logger");
 const logger = Logger.get("DB");
 
 // Get connect and connection from mongoose;
-const { connect, connection } = require("mongoose");
+const { connect, connection, set } = require("mongoose");
 
 class DB {
   /**
@@ -32,6 +32,7 @@ class DB {
   }
 
   init() {
+    set("useCreateIndex", true);
     return connect(this._uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
