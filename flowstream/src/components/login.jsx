@@ -24,7 +24,7 @@ const Login = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-    }).then((res) => console.log(res));
+    }).then((res) => console.log(res.headers));
   };
 
   return (

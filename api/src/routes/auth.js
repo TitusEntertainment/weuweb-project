@@ -68,9 +68,8 @@ router.post("/login", async (req, res) => {
     process.env.TOKEN_SECRET,
     { expiresIn: "2h" }
   );
-  return res.json({
-    token: token,
-  });
+  res.setHeader("token", token);
+  return res.status(200).json({ ok: true });
 });
 
 module.exports = router;
