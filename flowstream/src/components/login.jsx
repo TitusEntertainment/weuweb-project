@@ -24,7 +24,12 @@ const Login = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-    }).then((res) => console.log(res.headers));
+    }).then((res) => {
+      const token = res.headers.get("token");
+      console.log(token);
+      if (!token) return;
+      localStorage.setItem("auth-token", token);
+    });
   };
 
   return (
