@@ -4,6 +4,7 @@ import Home from "./components/home";
 import Header from "./components/header";
 import Register from "./components/register";
 import Login from "./components/login";
+import Profile from "./components/profile";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           <Route exact path="/products"></Route>
           <Route exact path="/shop"></Route>
           <Route exact path="/feedback"></Route>
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
           <Route exact path="/register">
             <Register />
           </Route>

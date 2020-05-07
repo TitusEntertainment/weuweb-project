@@ -2,8 +2,18 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 import MediaQuery from "react-responsive";
+import cookie from "cookie";
 
 const Header = () => {
+  let loginBtn = "Login/Register";
+  let whereTo = "/Register";
+
+  const cookies = cookie.parse(document.cookie);
+  if (cookies.token) {
+    loginBtn = "Profile";
+    whereTo = "/Profile";
+  }
+
   return (
     <div className="Header">
       <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
@@ -26,7 +36,7 @@ const Header = () => {
           </ul>
         </nav>
         <button>
-          <Link to="/register">Register/Login</Link>
+          <Link to={whereTo}>{loginBtn}</Link>
         </button>
       </MediaQuery>
     </div>

@@ -10,7 +10,7 @@ const genTag = async (username) => {
 
   //let data = await Tag.findOne({ tag: newTag });
   let data = await Tag.find({ username }).select("tag -_id");
-  if (data.tags.length > 10000) return null;
+  if (data.length > 10000) return null;
 
   const tags = data.map((el) => el.tag);
   while (tags.includes(newTag)) {

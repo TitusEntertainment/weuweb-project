@@ -1,0 +1,27 @@
+.Profile {
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  button {
+    width: 12em;
+    height: 3em;
+    background: #26282e;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    margin-top: 3rem;
+    box-shadow: 4px 4px 16px #222429, -2px -2px 16px #2a2c33;
+  }
+}

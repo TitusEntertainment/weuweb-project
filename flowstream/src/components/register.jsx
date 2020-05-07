@@ -34,9 +34,12 @@ const Register = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     }).then((res) => {
-      switch (res.stauts) {
+      switch (res.status) {
         case 400:
-          formSubmitError = "something went wrong!";
+          formSubmitError = "Bad input";
+          break;
+        case 500:
+          formSubmitError = "Internal server error";
           break;
         case 200:
           formSubmitError = "Success!";

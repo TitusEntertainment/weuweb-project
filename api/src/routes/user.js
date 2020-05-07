@@ -34,11 +34,18 @@ router.post("/delete", verify, async (req, res) => {
 });
 
 // This is the GET route that get's the logged in users information. This route is meant for the display of the users profile. We verify the users token and then try to find the user in the database. If we do we return some of the users data (we don't return sensetive data like the password). If we don't find the user we return an internal error 500 otherwise we return the data with a 200 (ok) status
-router.get("/", verify, async (req, res) => {
-  const data = await User.findOne({ _id: req.user._id });
+router.post("/", verify, async (req, res) => {
+  const data = await User.findOne({ _id: req.user.data._id });
   if (!data) return res.status(500).send("Can't find any user with that id");
 
-  return res.status(200).send(data._id, data.name, data.lastName, data.username, data.email, data.tag);
+  return res.status(200).json({
+    ok: true,
+    name: data.name,
+    lastname: data.lastName,
+    username: data.username,
+    email: data.email,
+    tag: data.tag,
+  });
 });
 
 module.exports = router;

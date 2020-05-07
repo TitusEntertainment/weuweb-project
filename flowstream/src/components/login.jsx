@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import fetch from "node-fetch";
 import "../scss/register.scss";
 import { useForm } from "react-hook-form";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 const Login = () => {
   const { register, handleSubmit, errors, setError, clearError } = useForm();
@@ -26,9 +27,14 @@ const Login = () => {
       body: JSON.stringify(body),
     }).then((res) => {
       const token = res.headers.get("token");
-      console.log(token);
       if (!token) return;
-      localStorage.setItem("auth-token", token);
+
+      let date = new Date();
+      date.setTime(date.getTime() + 2 * 3600 * 1000);
+
+      document.cookie = `token=${token}; expires=${date.toGMTString()}`;
+      window.location.reload(false);
+      return <Redirect from="/login" to="/profile" />;
     });
   };
 
