@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "cookie": "^0.4.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
